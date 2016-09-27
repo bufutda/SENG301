@@ -1,0 +1,10 @@
+configure([0] "Coke", 250; "water", 250; "stuff", 205) // This SHOULD cause an error, but DOES NOT for the dummy!
+construct(5, 10, 25, 100; 3)
+coin-load([0] 0; 5, 1)
+coin-load([0] 1; 10, 1)
+coin-load([0] 2; 25, 2)
+pop-load([0] 0; "Coke", 1)
+pop-load([0] 1; "water", 1)
+pop-load([0] 2; "stuff", 1)
+unload([0])
+CHECK_TEARDOWN(65; 0; "Coke", "water", "stuff") // This causes an error for the dummy, but should not for a correct VM 

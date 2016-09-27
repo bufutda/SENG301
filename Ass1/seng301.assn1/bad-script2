@@ -1,0 +1,10 @@
+construct(5, 10, 25, 100; 3)
+configure([0] "Coke", 250; "water", 250; "stuff", 0 /* the cost of "stuff" is illegal */) // This SHOULD cause an error, but DOES NOT in the dummy!
+coin-load([0] 0; 5, 1)
+coin-load([0] 1; 10, 1)
+coin-load([0] 2; 25, 2)
+pop-load([0] 0; "Coke", 1)
+pop-load([0] 1; "water", 1)
+pop-load([0] 2; "stuff", 1)
+unload([0])
+CHECK_TEARDOWN(0; 0) // This passes, but we should not get this far

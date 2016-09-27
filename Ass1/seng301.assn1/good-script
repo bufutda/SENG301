@@ -1,0 +1,19 @@
+construct(5, 10, 25, 100; 3)
+configure([0] "Coke", 250; "water", 250; "stuff", 205)
+coin-load([0] 0; 5, 1)
+coin-load([0] 1; 10, 1)
+coin-load([0] 2; 25, 2)
+pop-load([0] 0; "Coke", 1)
+pop-load([0] 1; "water", 1)
+pop-load([0] 2; "stuff", 1)
+press([0] 0)
+extract([0])
+CHECK_DELIVERY(0) /* expect nothing */
+insert([0] 100)
+insert([0] 100)
+insert([0] 100)
+press([0] 0)
+extract([0])
+CHECK_DELIVERY(50, "Coke") /* 1 Coke, 50 cents in change */ // Fails for the dummy; should work for your implementation
+unload([0])
+CHECK_TEARDOWN(15; 300; "water", "stuff") // Fails for the dummy; should work for your implementation
